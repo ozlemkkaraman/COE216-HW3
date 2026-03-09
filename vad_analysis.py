@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 import soundfile as sf
 
 # load and normalize the audio
-audio_file = "speech.wav"  # kendi dosyan
+audio_file = "speech.wav"
 signal, fs = librosa.load(audio_file, sr=None)
 signal = signal / np.max(np.abs(signal))  # normalize [-1,1]
-signal = signal - np.mean(signal)  # DC offset düzeltme
+signal = signal - np.mean(signal)
 
 # frame parameters
 frame_size = int(0.020 * fs)  # 20 ms
@@ -109,4 +109,5 @@ for idx, label in enumerate(classification):
         plt.axvspan(start/fs, end/fs, color='green', alpha=0.3)
 plt.title("Voiced (Orange) vs Unvoiced (Green)")
 plt.tight_layout()
+
 plt.show()
